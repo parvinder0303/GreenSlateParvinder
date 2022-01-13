@@ -17,21 +17,42 @@ public class YourStore {
 	@FindBy(xpath="//span[normalize-space()='Add to Cart']")
 	WebElement AddToCart;
 	
-	@FindBy(xpath="//div[contains(text(), ' Success: You have added ')]")
+	@FindBy(xpath="//div[contains(text(), 'Success: You have added ')]")
 	WebElement SuccessAddedMessage;
+	
+	@FindBy(xpath="//div[normalize-space()=' Warning: E-Mail Address is already registered!']")
+	WebElement AlreadyExistUser;
+	
+	@FindBy(xpath="//div[@class='caption']/h4/a")
+	WebElement productName;
+	
+	@FindBy(xpath="//p[normalize-space()='There is no product that matches the search criteria.']")
+	WebElement ProductNotFoundMessage;
 	
 	public void clickaddToCart() {
 		AddToCart.click();
 	}
 	
-	public void ProductAdded() {
+	public String ProductAdded() {
 		try{
-			SuccessAddedMessage.getText();
+			return SuccessAddedMessage.getText();
 		}
 		catch(Exception e) {
-			e.getMessage();
+			return e.getMessage();
 		}
 	}
 	
+	public boolean isDisplayedProductName() {
+		return productName.isDisplayed();
+	}
+	
+	
+	public String getProductName() {
+		return productName.getText();
+	}
+	
+	public String ProductNotPresent() {
+		return ProductNotFoundMessage.getText();
+	}
 	
 }

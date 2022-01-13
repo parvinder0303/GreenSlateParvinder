@@ -30,7 +30,10 @@ public class HomePage {
 	WebElement ClickCurrency;
 	
 	@FindBy(xpath="//form[@id='form-currency']//li/button[normalize-space()='€ Euro']")
-	WebElement ChangeCurrency;
+	WebElement ChangeCurrencyToEuro;
+	
+	@FindBy(xpath="//form[@id='form-currency']//li/button[normalize-space()='£ Pound Sterling']")
+	WebElement ChangeCurrencyToPound;
 	
 	@FindBy(xpath="//form[@id='form-currency']//strong")
 	WebElement currencySelected;
@@ -58,8 +61,12 @@ public class HomePage {
 		ClickCurrency.click();
 	}
 	
-	public void clickToChangeCurrency() {
-		ChangeCurrency.click();
+	public void clickToChangeCurrencyEuro() {
+		ChangeCurrencyToEuro.click();
+	}
+	
+	public void clickToChangeCurrencyPound() {
+		ChangeCurrencyToPound.click();
 	}
 	
 	public String getCurrency() {

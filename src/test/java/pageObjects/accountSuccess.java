@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class accountSuccess {
 	
@@ -14,8 +15,11 @@ public class accountSuccess {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//h1[@normalixe-space='Your Account Has Been Created!']")
+	@FindBy(xpath="//h1[@normalize-space()='Your Account Has Been Created!']")
 	WebElement accountConfirmationMessage;
+	
+	@FindBy(xpath="//a[normalize-space()='Logout']")
+	WebElement Logout;
 
 	public void accountCreated() {
 		try {
@@ -24,5 +28,9 @@ public class accountSuccess {
 		catch(Exception e) {
 			e.getMessage();
 		}
+}
+	
+	public void clickLogout() {
+		Logout.click();
 }
 }

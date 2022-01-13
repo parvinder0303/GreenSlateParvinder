@@ -5,11 +5,10 @@
 
 	<test name="Opencart Tests">
 		
-		<parameter name="browser" value="chrome" />
 		<classes>
-			 <class name="testCases.TestCase_NewCustomer" /> 
-			  <class name="testCases.TestCase_SearchAndOrderProduct"/> 
-			 <class name="testCases.TestCase_CurrencyDisplayed"/>
+			 <class name="testCases.TestScenario_OnlyNewCustomerRegistered" /> 
+			  <class name="testCases.TestScenario_SearchOrderSpecificProduct"/> 
+			 <class name="testCases.TestScenario_PriceDisplayedSelectedCurrency"/>
 			
 		</classes>
 	</test>
