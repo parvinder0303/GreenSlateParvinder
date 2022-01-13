@@ -1,8 +1,8 @@
 package testCases;
 
 import org.apache.commons.lang.RandomStringUtils;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
@@ -41,12 +41,14 @@ public class TestScenario_OnlyNewCustomerRegistered extends BaseClass{
 		try {
 		if(driver.getPageSource().contains("Your Account Has Been Created!")) {
 			System.out.println("Website allows new user to register");
+			Assert.assertTrue(true);
 			hp.click_myAccount();
 			accountSuccess as=new accountSuccess(driver);
 			as.clickLogout();
 		}
 		else if(driver.getPageSource().contains(" Warning: E-Mail Address is already registered!")){
 			System.out.println("Website doesn't allow already existing user to register");
+			Assert.assertTrue(false);
 		}
 		}
 		catch(Exception e) {
@@ -80,12 +82,15 @@ public void existingUserRegistration() {
 		try {
 		if(driver.getPageSource().contains("Your Account Has Been Created!")) {
 			System.out.println("Website allows old user to register");
+			Assert.assertTrue(false);
 			hp.click_myAccount();
 			accountSuccess as=new accountSuccess(driver);
 			as.clickLogout();
+			
 		}
 		else if(driver.getPageSource().contains(" Warning: E-Mail Address is already registered!")){
 			System.out.println("Website doesn't allow already existing user to register");
+			Assert.assertTrue(true);
 		}	
 	}
 		catch(Exception e) {
