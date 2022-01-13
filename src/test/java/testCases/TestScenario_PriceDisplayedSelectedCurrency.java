@@ -1,5 +1,7 @@
 package testCases;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,7 +19,7 @@ public class TestScenario_PriceDisplayedSelectedCurrency extends BaseClass {
 	}
 	
 	@Test(priority=1)
-	public void DefaultCurrencyDisplayed() {        	 
+	public void DefaultCurrencyDisplayed() throws IOException {        	 
 		
 		
 		HomePage hp=new HomePage(driver);
@@ -28,12 +30,13 @@ public class TestScenario_PriceDisplayedSelectedCurrency extends BaseClass {
 		}
 		else {
 			System.out.println("Product price is displayed in the selected currency");
+			screenShotCapture(driver, "Product price is not present in Euro");
 			Assert.assertTrue(false);
 		}
 	}
 	
 	@Test(priority=2)
-	public void EuroCurrencyDisplayed() {        	 
+	public void EuroCurrencyDisplayed() throws IOException {        	 
 		
 		
 		HomePage hp=new HomePage(driver);
@@ -46,12 +49,13 @@ public class TestScenario_PriceDisplayedSelectedCurrency extends BaseClass {
 		}
 		else {
 			System.out.println("Product price is displayed in the € Euro currency");
+			screenShotCapture(driver, "Product price is not present in Euro");
 			Assert.assertTrue(false);
 		}
 	}
 	
 	@Test(priority=3)
-	public void PoundCurrencyDisplayed() {        	 
+	public void PoundCurrencyDisplayed() throws IOException {        	 
 		
 		HomePage hp=new HomePage(driver);
 		hp.clickCurrencyDropDown();
@@ -63,6 +67,7 @@ public class TestScenario_PriceDisplayedSelectedCurrency extends BaseClass {
 		}
 		else {
 			System.out.println("Product price is displayed in the £ Pound Sterling currency");
+			screenShotCapture(driver, "Product price is not present in Euro");
 			Assert.assertTrue(false);
 		}
 	}

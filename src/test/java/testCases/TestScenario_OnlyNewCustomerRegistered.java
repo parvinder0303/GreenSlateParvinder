@@ -48,11 +48,13 @@ public class TestScenario_OnlyNewCustomerRegistered extends BaseClass{
 		}
 		else if(driver.getPageSource().contains(" Warning: E-Mail Address is already registered!")){
 			System.out.println("Website doesn't allow already existing user to register");
+			screenShotCapture(driver, "new user is not able to register");
 			Assert.assertTrue(false);
 		}
 		}
 		catch(Exception e) {
 			System.out.println("Not letting new user register");
+			Assert.fail();
 		}
 		
 			
@@ -82,6 +84,7 @@ public void existingUserRegistration() {
 		try {
 		if(driver.getPageSource().contains("Your Account Has Been Created!")) {
 			System.out.println("Website allows old user to register");
+			screenShotCapture(driver, "issue while created account for old user");
 			Assert.assertTrue(false);
 			hp.click_myAccount();
 			accountSuccess as=new accountSuccess(driver);
@@ -95,6 +98,7 @@ public void existingUserRegistration() {
 	}
 		catch(Exception e) {
 			System.out.println("Some issue with the registration process");
+			Assert.fail();
 		}
 	}
 	
